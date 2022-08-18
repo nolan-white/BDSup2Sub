@@ -433,7 +433,7 @@ public class SupBDParser {
             int width  = buffer.getWord(index + 7);       // object_width
             int height = buffer.getWord(index + 9);       // object_height
 
-            if (width <= subPictureBD.getWidth() && height <= subPictureBD.getHeight()) {
+//            if (width <= subPictureBD.getWidth() && height <= subPictureBD.getHeight()) {
                 imageObjectFragment = new ImageObjectFragment(index + 11, pcsSegment.size - (index + 11 - pcsSegment.offset));
                 imageObject.getFragmentList().add(imageObjectFragment);
                 imageObject.setBufferSize(imageObjectFragment.getImagePacketSize());
@@ -441,10 +441,10 @@ public class SupBDParser {
                 imageObject.setWidth(width);
                 message.append("ID: ").append(objectID).append(", update: ").append(objectVersion).append(", seq: ").append((first ? "first" : "")).append(((first && last) ? "/" : "")).append((last ? "" + "last" : ""));
                 return true;
-            } else {
-                logger.warn("Invalid image size - ignored\n");
-                return false;
-            }
+//            } else {
+//                logger.warn("Invalid image size - ignored\n");
+//                return false;
+//            }
         } else {
             // object_data_fragment
             // skipped:

@@ -749,35 +749,35 @@ public class Core extends Thread {
         if (wNew < MIN_IMAGE_DIMENSION) {
             wNew = picSrc.getImageWidth();
         } else if (wNew > picTrg.getWidth()) {
-            wNew = picTrg.getWidth();
+//            wNew = picTrg.getWidth();
         }
         int hNew = (int)(picSrc.getImageHeight() * scaleY * fy + 0.5);
         if (hNew < MIN_IMAGE_DIMENSION) {
             hNew = picSrc.getImageHeight();
         } else if (hNew > picTrg.getHeight()) {
-            hNew = picTrg.getHeight();
+//            hNew = picTrg.getHeight();
         }
         picTrg.setImageWidth(wNew);
         picTrg.setImageHeight(hNew);
         if (wNew != wOld) {
             int xOfs = (int)(picSrc.getXOffset() * scaleX + 0.5);
-            int spaceSrc = (int)((picSrc.getWidth() -picSrc.getImageWidth())*scaleX + 0.5);
-            int spaceTrg = picTrg.getWidth() - wNew;
+            int spaceSrc = (int)(Math.abs(picSrc.getWidth() -picSrc.getImageWidth())*scaleX + 0.5);
+            int spaceTrg = Math.abs(picTrg.getWidth() - wNew);
             xOfs += (spaceTrg - spaceSrc) / 2;
             if (xOfs < 0) {
                 xOfs = 0;
             } else if (xOfs+wNew > picTrg.getWidth()) {
-                xOfs = picTrg.getWidth() - wNew;
+//                xOfs = picTrg.getWidth() - wNew;
             }
             picTrg.setOfsX(xOfs);
         }
         if (hNew != hOld) {
             int yOfs = (int)(picSrc.getYOffset() * scaleY + 0.5);
-            int spaceSrc = (int)((picSrc.getHeight() -picSrc.getImageHeight())*scaleY + 0.5);
-            int spaceTrg = picTrg.getHeight() - hNew;
+            int spaceSrc = (int)(Math.abs(picSrc.getHeight() -picSrc.getImageHeight())*scaleY + 0.5);
+            int spaceTrg = Math.abs(picTrg.getHeight() - hNew);
             yOfs += (spaceTrg - spaceSrc) / 2;
             if (yOfs+hNew > picTrg.getHeight()) {
-                yOfs = picTrg.getHeight() - hNew;
+//                yOfs = picTrg.getHeight() - hNew;
             }
             picTrg.setOfsY(yOfs);
         }
@@ -860,35 +860,35 @@ public class Core extends Thread {
             if (w < MIN_IMAGE_DIMENSION) {
                 w = picSrc.getImageWidth();
             } else if (w > picTrg.getWidth()) {
-                w = picTrg.getWidth();
+//                w = picTrg.getWidth();
             }
 
             int h = (int)(picSrc.getImageHeight() * scaleY * fy + 0.5);
             if (h < MIN_IMAGE_DIMENSION) {
                 h = picSrc.getImageHeight();
             } else if (h > picTrg.getHeight()) {
-                h = picTrg.getHeight();
+//                h = picTrg.getHeight();
             }
             picTrg.setImageWidth(w);
             picTrg.setImageHeight(h);
 
             int xOfs = (int)(picSrc.getXOffset() * scaleX + 0.5);
-            int spaceSrc = (int)((picSrc.getWidth() -picSrc.getImageWidth())*scaleX + 0.5);
-            int spaceTrg = picTrg.getWidth() - w;
+            int spaceSrc = (int)(Math.abs(picSrc.getWidth() -picSrc.getImageWidth())*scaleX + 0.5);
+            int spaceTrg = Math.abs(picTrg.getWidth() - w);
             xOfs += (spaceTrg - spaceSrc) / 2;
             if (xOfs < 0) {
                 xOfs = 0;
             } else if (xOfs+w > picTrg.getWidth()) {
-                xOfs = picTrg.getWidth() - w;
+//                xOfs = picTrg.getWidth() - w;
             }
             picTrg.setOfsX(xOfs);
 
             int yOfs = (int)(picSrc.getYOffset() * scaleY + 0.5);
-            spaceSrc = (int)((picSrc.getHeight() -picSrc.getImageHeight())*scaleY + 0.5);
-            spaceTrg = picTrg.getHeight() - h;
+            spaceSrc = (int)(Math.abs(picSrc.getHeight() -picSrc.getImageHeight())*scaleY + 0.5);
+            spaceTrg = Math.abs(picTrg.getHeight() - h);
             yOfs += (spaceTrg - spaceSrc) / 2;
             if (yOfs+h > picTrg.getHeight()) {
-                yOfs = picTrg.getHeight() - h;
+//                yOfs = picTrg.getHeight() - h;
             }
             picTrg.setOfsY(yOfs);
         }
@@ -1015,14 +1015,14 @@ public class Core extends Thread {
             if (w < MIN_IMAGE_DIMENSION) {
                 w = picSrc.getImageWidth();
             } else if (w > subPictures[i].getWidth()) {
-                w = subPictures[i].getWidth();
+//                w = subPictures[i].getWidth();
                 fsXNew = (double)w / (double)picSrc.getImageWidth() / scaleX;
             }
             int h = (int)(picSrc.getImageHeight() * scaleY * fsYNew + 0.5);
             if (h < MIN_IMAGE_DIMENSION) {
                 h = picSrc.getImageHeight();
             } else if (h > subPictures[i].getHeight()) {
-                h = subPictures[i].getHeight();
+//                h = subPictures[i].getHeight();
                 fsYNew = (double)h / (double)picSrc.getImageHeight() / scaleY;
             }
 
@@ -1032,28 +1032,28 @@ public class Core extends Thread {
             // correct ratio change
             int xOfs = (int)(picOld.getXOffset()*factX + 0.5);
             if (fsXNew != fsXOld) {
-                int spaceTrgOld = (int)((picOld.getWidth() - picOld.getImageWidth())*factX + 0.5);
-                int spaceTrg    = subPictures[i].getWidth() - w;
+                int spaceTrgOld = (int)(Math.abs(picOld.getWidth() - picOld.getImageWidth())*factX + 0.5);
+                int spaceTrg    = Math.abs(subPictures[i].getWidth() - w);
                 xOfs += (spaceTrg - spaceTrgOld) / 2;
             }
             if (xOfs < 0) {
                 xOfs = 0;
             } else if (xOfs+w > subPictures[i].getWidth()) {
-                xOfs = subPictures[i].getWidth() - w;
+//                xOfs = subPictures[i].getWidth() - w;
             }
             subPictures[i].setOfsX(xOfs);
 
             int yOfs = (int)(picOld.getYOffset()*factY + 0.5);
             if (fsYNew != fsYOld) {
-                int spaceTrgOld = (int)((picOld.getHeight() - picOld.getImageHeight())*factY + 0.5);
-                int spaceTrg = subPictures[i].getHeight() - h;
+                int spaceTrgOld = (int)(Math.abs(picOld.getHeight() - picOld.getImageHeight())*factY + 0.5);
+                int spaceTrg = Math.abs(subPictures[i].getHeight() - h);
                 yOfs += (spaceTrg - spaceTrgOld) / 2;
             }
             if (yOfs < 0) {
                 yOfs = 0;
             }
             if (yOfs+h > subPictures[i].getHeight()) {
-                yOfs = subPictures[i].getHeight() - h;
+//                yOfs = subPictures[i].getHeight() - h;
             }
             subPictures[i].setOfsY(yOfs);
 

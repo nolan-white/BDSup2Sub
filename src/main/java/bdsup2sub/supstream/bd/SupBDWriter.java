@@ -140,7 +140,7 @@ public final class SupBDWriter {
         } else {
             int yMax = pic.getHeight() - pic.getImageHeight() - 2 * configuration.getCropOffsetY();
             if (yOfs > yMax) {
-                yOfs = yMax;
+//                yOfs = yMax;
             }
         }
 

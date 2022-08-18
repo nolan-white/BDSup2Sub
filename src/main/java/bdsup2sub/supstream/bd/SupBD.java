@@ -67,9 +67,9 @@ public class SupBD implements SubtitleStream {
         ImageObjectFragment imageObjectFragment = subPictureBD.getImageObject().getFragmentList().get(0);
         long startOfs = imageObjectFragment.getImageBufferOfs();
 
-        if (width > subPictureBD.getWidth() || height > subPictureBD.getHeight()) {
-            throw new CoreException("Subpicture too large: " + width + "x" + height + " at offset " + ToolBox.toHexLeftZeroPadded(startOfs, 8));
-        }
+//        if (width > subPictureBD.getWidth() || height > subPictureBD.getHeight()) {
+//            throw new CoreException("Subpicture too large: " + width + "x" + height + " at offset " + ToolBox.toHexLeftZeroPadded(startOfs, 8));
+//        }
 
         Bitmap bm = new Bitmap(width, height, (byte)transparentColorIndex);
 
